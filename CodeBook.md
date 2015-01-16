@@ -1,7 +1,7 @@
 CodeBook for Peer Assignment of Getting-and-Cleaning-data
 ==========================================================
 
-This is a code book that describes the data, variables, and any works that were carried out to clean up the un-tidy data.
+This is a code book that describes the data, variables, and any transformation works that were carried out to clean up the un-tidy data.
 
 Data source
 -----------
@@ -14,9 +14,18 @@ The experiments have been carried out with a group of 30 volunteers within an ag
 
 The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. 
 
-The data
----------
-The dataset includes the following files:
+Attribute Information:
+--------------------------
+For each record in the dataset it is provided: 
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration. 
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment.
+
+The dataset
+------------
+It includes the following files:
 
 - 'README.txt'
 - 'features_info.txt': Shows information about the variables used on the feature vector.
@@ -26,23 +35,28 @@ The dataset includes the following files:
 - 'train/y_train.txt': Training labels.
 - 'test/X_test.txt': Test set.
 - 'test/y_test.txt': Test labels.
-- 
-The following files are available for the train and test data. Their descriptions are equivalent.
 
-- 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+The following data files are available in the train folder and test folder: 
 
-- 'train/Inertial Signals/total_acc_x_train.txt': The acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. Every row shows a 128 element vector. The same description applies for the 'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y and Z axis.
+- 'train/subject_train.txt' and 'test/subject_test.txt':
+   Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+   each file contains 1000 rows.
+  
+- 'train/Inertial Signals/total_acc_x_train.txt': 
+   The acceleration signal from the smartphone accelerometer X axis in standard gravity units 'g'. Every row shows a 128 
+   element vector. The same description applies for the 'total_acc_x_train.txt' and 'total_acc_z_train.txt' files for the Y 
+   and Z axis.
 
-- 'train/Inertial Signals/body_acc_x_train.txt': The body acceleration signal obtained by subtracting the gravity from the total acceleration.
+- 'train/Inertial Signals/body_acc_x_train.txt': 
+   The body acceleration signal obtained by subtracting the gravity from the total acceleration.
 
-- 'train/Inertial Signals/body_gyro_x_train.txt': The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second.
+- 'train/Inertial Signals/body_gyro_x_train.txt': 
+   The angular velocity vector measured by the gyroscope for each window sample. The units are radians/second.
 
 
-Transformation details
+Transformation works
 ----------------------
-
-
-There are 5 Steps:
+Involve 5 Steps:
 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
@@ -50,7 +64,8 @@ There are 5 Steps:
 4. Appropriately labels the data set with descriptive activity names.
 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-## How ```run_analysis.R``` implements the above steps:
+ How ```run_analysis.R``` implements the above steps:
+--------------------------------------------------------
 
 * Require ```reshapre2``` and ```data.table``` librareis.
 * Load both test and train data
